@@ -1,0 +1,43 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Maven
+target/
+.m2/
+*.jar
+*.war
+*.ear
+
+# Gradle
+.gradle/
+build/
+dist/
+
+# Logs
+logs/
+*.log
+
+# Spring Boot
+application.local.yml
+.env
+
+# Database
+*.h2.db
+*.db
+
+# Node (if applicable)
+node_modules/
+package-lock.json
+
+# Python (if applicable)
+__pycache__/
+*.pyc
+venv/
+
+# Git
+.git/

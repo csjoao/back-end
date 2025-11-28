@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: hyperativa-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: hyperativa
+      MYSQL_USER: hyperativa
+      MYSQL_PASSWORD: hyperativa
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - hyperativa-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: hyperativa-phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - hyperativa-network
+
+volumes:
+  mysql_data:
+
+networks:
+  hyperativa-network:
+    driver: bridge

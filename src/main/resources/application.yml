@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: card-api
+  datasource:
+    url: jdbc:mysql://localhost:3306/hyperativa?allowPublicKeyRetrieval=true&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: "Q2fT0qS3xwZ2RLTf6o3nE0uO5ij9k5z7lFqWbYtV0mA="
+    expiration: 86400000
+  encryption:
+    key: "u8Fh9d0xN2sV7l4Wc1Gq3p8Tz9Jr6e5Hq2Lw8d1Bv4A="
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
